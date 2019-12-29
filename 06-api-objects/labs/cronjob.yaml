@@ -1,0 +1,23 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  creationTimestamp: null
+  name: resting
+spec:
+  jobTemplate:
+    metadata:
+      creationTimestamp: null
+      name: resting
+    spec:
+      activeDeadlineSeconds: 10
+      template:
+        metadata:
+          creationTimestamp: null
+        spec:
+          containers:
+          - image: busybox
+            name: resting
+            command: ["/bin/sleep"]
+            args: ["30"]
+          restartPolicy: Never
+  schedule: "*/1 * * * *"
