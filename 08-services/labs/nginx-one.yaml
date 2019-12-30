@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    system: secondary
+  name: nginx-one
+  namespace: accounting
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      system: secondary
+  trategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        system: secondary
+    spec:
+      containers:
+      - image: nginx:1.11.1
+        imagePullPolicy: Always
+        name: nginx
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+      nodeSelector:
+              system: secondOne
