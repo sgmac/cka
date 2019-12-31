@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  namespace: small
+  annotations:
+    pv.kubernetes.io/bound-by-controller: "yes"
+  creationTimestamp: "2019-12-31T07:25:44Z"
+  finalizers:
+  - kubernetes.io/pv-protection
+  name: pvol-1
+  resourceVersion: "575840"
+  selfLink: /api/v1/persistentvolumes/pvol-1
+  uid: 490dcc76-305a-401a-86c3-2128ba07320c
+spec:
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 1Gi
+  claimRef:
+    apiVersion: v1
+    kind: PersistentVolumeClaim
+    name: pvc-one
+    namespace: small
+    resourceVersion: "575050"
+    uid: a42dd864-4202-4662-a18b-7ec5a8ad6757
+  nfs:
+    path: /opt/sfw
+    server: kube-master
+  persistentVolumeReclaimPolicy: Recycle
+  volumeMode: Filesystem
+status:
+  phase: Released

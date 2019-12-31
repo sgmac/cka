@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: LimitRange
+metadata:
+  name: low-resource-range
+  namespace: small
+spec:
+  limits:
+  - default:
+      cpu: 500m
+      memory: 500Mi
+    defaultRequest:
+      cpu: 500m
+      memory: 100Mi
+    type: Container
